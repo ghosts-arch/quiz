@@ -1,5 +1,6 @@
 import { createInterface } from "node:readline/promises";
-import { writeFile } from "node:fs/promises";
+import { initDatabase } from "./database/database.js";
+import { SessionStatistiques } from "./database/models/session_statistiques.js";
 
 const regionsQuiz = [
   {
@@ -66,7 +67,7 @@ const charactersQuiz = [
 const weaponsQuiz = [
   {
     question: "question 1 about weapons",
-    answer: "answer 6 about weapons",
+    answer: "answer 1 about weapons",
   },
   {
     question: "question 2 about weapons",
@@ -86,7 +87,7 @@ const weaponsQuiz = [
   },
   {
     question: "question 6 about weapons",
-    answer: "answer 1 about weapons",
+    answer: "answer 6 about weapons",
   },
   {
     question: "question 7 about weapons",
@@ -94,6 +95,7 @@ const weaponsQuiz = [
   },
 ];
 
+initDatabase();
 const input = createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -125,7 +127,13 @@ const runQuiz = async (quizName, questions, file) => {
     console.log(`Correct answer : ${questions[i].answer}`);
     console.log(`Your answer : ${userInputs[i]}\n`);
   }
-  await writeFile(file, userInputs.join("\n"));
+  // await writeFile(file, userInputs.join("\n"));
+  await SessionStatistiques.create({
+    quizName,
+    score,
+    total_questions: questions.length,
+    duration: end - start,
+  });
 };
 
 while (true) {
