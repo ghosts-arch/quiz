@@ -5,6 +5,7 @@ export class SessionStatistiques extends Model {
   declare totalQuestions: number;
   declare score: number;
   declare duration: number;
+  declare createdAt: Date;
 
   static async lastSessions(): Promise<SessionStatistiques[]> {
     return await SessionStatistiques.findAll({

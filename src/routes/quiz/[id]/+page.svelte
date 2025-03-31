@@ -83,10 +83,27 @@
     {/if}
   {/each}
   <h2>Dernières sessions</h2>
-  {#each sessions as session}
-    {session.quizName}
-    {session.score}
-    {session.totalQuestions}
-    {session.duration}
-  {/each}
+  <table>
+    <thead>
+      <tr>
+        <th>Quiz</th>
+        <th>Score</th>
+        <th>Duration</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each sessions as session}
+        <tr>
+          <td>{session.quizName}</td>
+          <td
+            >{session.score}/{session.totalQuestions} ({(score * 100) /
+              session.totalQuestions}%)</td
+          >
+          <td>{session.duration}</td>
+          <td>{session.createdAt}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
 {/if}
