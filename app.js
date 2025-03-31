@@ -1,6 +1,6 @@
 import { createInterface } from "node:readline/promises";
-import { initDatabase } from "./database/database.js";
-import { SessionStatistiques } from "./database/models/session_statistiques.js";
+import { initDatabase } from "./src/lib/database/database.js";
+import { SessionStatistiques } from "./src/lib/database/models/session_statistiques.js";
 
 const regionsQuiz = [
   {
