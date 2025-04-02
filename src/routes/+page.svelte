@@ -4,3 +4,5 @@
   <li><a href="/quiz/2">Quiz 2</a></li>
   <li><a href="/quiz/3">Quiz 3</a></li>
 </ol>
+
+<a href="/quizs/create">Créer un quiz</a>
