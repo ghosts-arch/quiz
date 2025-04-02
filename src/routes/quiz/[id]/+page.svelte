@@ -15,7 +15,7 @@
     return currentQuestion + 1 == data.quiz.length;
   };
   const saveCurrentSession = async () => {
-    const response = await fetch("/api/sessions/create", {
+    const response = await fetch("/api/sessions/save", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
