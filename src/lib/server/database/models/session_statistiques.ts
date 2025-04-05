@@ -1,4 +1,4 @@
-import { Model, STRING, INTEGER, Sequelize } from "sequelize";
+import { Model, DataTypes, Sequelize } from "sequelize";
 
 export class SessionStatistiques extends Model {
   declare quizName: string;
@@ -19,19 +19,18 @@ export const initModel = (sequelize: Sequelize) => {
   SessionStatistiques.init(
     {
       quizName: {
-        type: STRING,
+        type: DataTypes.STRING,
       },
       totalQuestions: {
-        type: INTEGER,
+        type: DataTypes.INTEGER,
       },
       score: {
-        type: INTEGER,
+        type: DataTypes.INTEGER,
       },
       duration: {
-        type: INTEGER,
+        type: DataTypes.INTEGER,
       },
     },
     { sequelize, modelName: "session_statistiques" }
   );
-  // console.log("SessionStatistiques model created");
 };
