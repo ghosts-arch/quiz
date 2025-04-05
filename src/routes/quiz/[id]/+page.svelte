@@ -27,7 +27,6 @@
         duration: end - start,
       }),
     });
-    console.log(await response.json());
   };
   const getLastSessions = async () => {
     const response = await fetch("/api/sessions/last", {
@@ -37,7 +36,6 @@
       },
     });
     const data = await response.json();
-    console.log(data.sessions);
     return data;
   };
   const validateUserAnswer = async (): Promise<void> => {

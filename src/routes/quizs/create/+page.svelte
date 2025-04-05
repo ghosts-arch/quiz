@@ -6,4 +6,5 @@
   <label for="quizName"
     >Nom du Quiz : <input name="quizName" type="text" /></label
   >
+  <button type="submit">Créer</button>
 </form>
