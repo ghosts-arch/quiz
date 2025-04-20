@@ -13,7 +13,10 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
         }
       );
     }
-    return json({ name: name }, { status: 201 });
+    const createdQuiz = await Quiz.create({
+      name: name,
+    });
+    return json(createdQuiz, { status: 201 });
   } catch (error: unknown) {
     if (error instanceof SyntaxError) {
       return json({ error: "Invalid JSON" }, { status: 400 });
@@ -23,6 +26,6 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 };
 
 export const GET: RequestHandler = async ({}): Promise<Response> => {
-  const result = Quiz.findAll({});
+  const result = await Quiz.findAll({});
   return json(result);
 };
